@@ -85,9 +85,8 @@ int cgiMain()
 		return -1;
 	}
 
+  fprintf(cgiOut, "<div class=\"container\"> <h1 class=\"text-center\">修改学生信息成功</h1>");
 
-
-	fprintf(cgiOut, "update student ok!\n");
 	mysql_close(db);
 	return 0;
 }

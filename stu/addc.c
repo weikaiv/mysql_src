@@ -98,7 +98,8 @@ int cgiMain()
 		return -1;
 	}
 
-	fprintf(cgiOut, "add student ok!\n");
+	fprintf(cgiOut, "<div class=\"container\"> <h1 class=\"text-center\">添加课程成功</h1>");
+	
 	mysql_close(db);
 	return 0;
 }

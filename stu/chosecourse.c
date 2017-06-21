@@ -81,7 +81,8 @@ int cgiMain()
 		}
 	}
 
-	fprintf(cgiOut, "chose course ok!\n");
+	fprintf(cgiOut, "<div class=\"container\"> <h1 class=\"text-center\">选课成功</h1>");
+	
 	mysql_close(db);
 	return 0;
 }
