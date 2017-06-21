@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生信息管理系统</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    body {
+        height: 100%;
+        background-color: lightblue;
+    }
+    ul li {
+    	list-style: none;
+    }
+    .header {
+        margin-bottom: 50px;
+    }
+    .operation>div {
+        padding: 15px;
+    }
+    .operation.row .text-center button {
+    	outline-style: none;
+    }
+    .forms li {
+        display: none;
+    }
+    .forms li button {
+        margin-right: 30px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1 class="header text-center">学生信息管理系统</h1>
+    <div class="container">
+        <div class="operation row">
+            <div class="text-center col-md-3 col-sm-6">
+                <button>查询学生信息</button>
+            </div>
+            <div class="text-center col-md-3 col-sm-6">
+                <button>修改学生信息</button>
+            </div>
+        </div>
+        <ul class="forms">
+            <li>
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/sel.cgi">
+                    <div class="form-group">
+                        <label for="name-sel" class="col-sm-2 control-label">输入姓名查询</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" class="form-control" id="name-sel" placeholder="输入*查询所有">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">提交</button>
+                        <button type="reset" class="btn btn-success">重置</button>
+                    </div>
+                </form>
+            </li>
+            <li>
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/mod.cgi">
+                    <div class="form-group">
+                        <label for="stuId-mod" class="col-sm-2 control-label">学生学号</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuId" class="form-control" id="stuId-mod" placeholder="请输入学生学号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name-mod" class="col-sm-2 control-label">学生姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" class="form-control" id="name-mod" placeholder="请输入学生姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="age-mod" class="col-sm-2 control-label">学生年龄</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="age" class="form-control" id="age-mod" placeholder="请输入学生年龄">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">提交</button>
+                        <button type="reset" class="btn btn-success">重置</button>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+    	var btns = $(".operation button");
+    	var lis = $(".forms li");
+        btns.addClass("btn btn-primary btn-lg");
+        for (var i = 0; i < btns.length; i++){
+        	btns.eq(i).click(i, function(event){
+        		lis.eq(event.data).addClass("show").siblings().removeClass("show");
+        	});
+        }
+    });
+    </script>
+</body>
+
+</html>
