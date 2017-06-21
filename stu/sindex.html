@@ -39,7 +39,13 @@
                 <button>查询学生信息</button>
             </div>
             <div class="text-center col-md-3 col-sm-6">
+                <button>查询成绩</button>
+            </div>
+            <div class="text-center col-md-3 col-sm-6">
                 <button>修改学生信息</button>
+            </div>
+            <div class="text-center col-md-3 col-sm-6">
+                <button>选课</button>
             </div>
         </div>
         <ul class="forms">
@@ -49,6 +55,20 @@
                         <label for="name-sel" class="col-sm-2 control-label">输入姓名查询</label>
                         <div class="col-sm-10">
                             <input type="text" name="name" class="form-control" id="name-sel" placeholder="输入*查询所有">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">提交</button>
+                        <button type="reset" class="btn btn-success">重置</button>
+                    </div>
+                </form>
+            </li>
+            <li>
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/selscore.cgi">
+                    <div class="form-group">
+                        <label for="name-sel" class="col-sm-2 control-label">输入姓名查询</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" class="form-control" id="name-sel" placeholder="输入姓名查询自己的成绩">
                         </div>
                     </div>
                     <div class="text-center">
@@ -75,6 +95,26 @@
                         <label for="age-mod" class="col-sm-2 control-label">学生年龄</label>
                         <div class="col-sm-10">
                             <input type="text" name="age" class="form-control" id="age-mod" placeholder="请输入学生年龄">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">提交</button>
+                        <button type="reset" class="btn btn-success">重置</button>
+                    </div>
+                </form>
+            </li>
+            <li>
+                <form class="form-horizontal" method="get" action="/cgi-bin/sx/chosecourse.cgi">
+                    <div class="form-group">
+                        <label for="id-sel" class="col-sm-2 control-label">输入学号</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="stuId" class="form-control" id="id-sel" placeholder="输入自己的学号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cid-sel" class="col-sm-2 control-label">输入要选的课程号</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="cId" class="form-control" id="cid-sel" placeholder="输入你要选的课程号">
                         </div>
                     </div>
                     <div class="text-center">

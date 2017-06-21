@@ -51,14 +51,7 @@ fclose(fd);
 	MYSQL *db;
 	char sql[128] = "\0";
 
-	if (name[0] == '*')
-	{
-		sprintf(sql, "select distinct id,name,sex,age,sname,sdept,smajor,sclass from ainfo where state = 0");
-	}
-	else
-	{
-		sprintf(sql, "select distinct * from ainfo where name = '%s'", name);
-	}
+		sprintf(sql, "select id,name,sname,sdept,smajor,sclass,cname,sgrade from allinfo where name = '%s'",name);
 
 
 	//初始化
