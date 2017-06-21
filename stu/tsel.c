@@ -24,7 +24,7 @@ int cgiMain()
 		    <link rel=\"stylesheet\" href=\"/stu/public/css/bootstrap.min.css\">\
 		</head>");
 
-	char name[32] = "\0";
+	char cname[32] = "\0";
 	int status = 0;
 	char ch;
 
@@ -40,10 +40,10 @@ int cgiMain()
 	}
 fclose(fd);
 
-	status = cgiFormString("name",  name, 32);
+	status = cgiFormString("cname",  cname, 32);
 	if (status != cgiFormSuccess)
 	{
-		fprintf(cgiOut, "get name error!\n");
+		fprintf(cgiOut, "get cname error!\n");
 		return 1;
 	}
 
@@ -51,14 +51,8 @@ fclose(fd);
 	MYSQL *db;
 	char sql[128] = "\0";
 
-	if (name[0] == '*')
-	{
-		sprintf(sql, "select id,name,sex,age,sname,sdept,smajor,sclass,cname,sgrade from allinfo where state = 0");
-	}
-	else
-	{
-		sprintf(sql, "select * from allinfo where name = '%s'", name);
-	}
+	sprintf(sql, "select id,name,sex,age,sname,sdept,smajor,sclass,sgrade from allinfo where cname = '%s'", cname);
+
 
 
 	//初始化

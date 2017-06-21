@@ -18,18 +18,6 @@ int cgiMain()
   int status = 0;
 	char ch;
 
-	if(!(fd = fopen(sindex, "r"))){
-		fprintf(cgiOut, "Cannot open file, %s\n", sindex);
-		return -1;
-	}
-	ch = fgetc(fd);
-
-	while(ch != EOF){
-		fprintf(cgiOut, "%c", ch);
-		ch = fgetc(fd);
-	}
-  fclose(fd);
-
   status = cgiFormString("stuId",  stuId, 32);
 	if (status != cgiFormSuccess)
 	{
@@ -59,15 +47,38 @@ int cgiMain()
 	}
 
 
-	// sprintf(sql, "delete from information where id = %d", atoi(stuId));
-	// if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
-	// {
-	// 	fprintf(cgiOut,"mysql_real_query fail:%s\n", mysql_error(db));
-	// 	mysql_close(db);
-	// 	return -1;
-	// }
-  //
-  //
+	sprintf(sql, "select * from information where id =%d", atoi(stuId));
+
+	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
+	{
+		fprintf(cgiOut,"mysql_real_query fail:%s\n", mysql_error(db));
+		mysql_close(db);
+		return -1;
+	}
+  MYSQL_RES *res;
+	res = mysql_store_result(db);
+	int num= (int)res->row_count;
+	if (res = NULL){
+		fprintf(cgiOut,"mysql_real_query fail:%s\n", mysql_error(db));
+		return -1;
+	}
+	if (num)
+	{
+
+		if(!(fd = fopen(sindex, "r"))){
+			fprintf(cgiOut, "Cannot open file, %s\n", sindex);
+			return -1;
+
+		}
+		ch = fgetc(fd);
+
+		while(ch != EOF){
+			fprintf(cgiOut, "%c", ch);
+			ch = fgetc(fd);
+		}
+	  fclose(fd);
+	}
+
 	// fprintf(cgiOut, "delete stu ok!\n");
 	mysql_close(db);
 
