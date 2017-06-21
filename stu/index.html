@@ -51,7 +51,10 @@
                 <button>修改学生信息</button>
             </div>
             <div class="text-center col-md-3 col-sm-6">
-                <button>删除学生信息</button>
+                <button>暂时删除学生信息</button>
+            </div>
+            <div class="text-center col-md-3 col-sm-6">
+                <button>永久删除学生信息</button>
             </div>
         </div>
         <ul class="forms">
@@ -136,7 +139,7 @@
             <li>
                 <form class="form-horizontal" method="get" action="/cgi-bin/sx/del.cgi">
                     <div class="form-group">
-                        <label for="stuId-del" class="col-sm-2 control-label">输入要删除的学生Id</label>
+                        <label for="stuId-del" class="col-sm-2 control-label">输入要暂时删除的学生Id</label>
                         <div class="col-sm-10">
                             <input type="text" name="stuId" class="form-control" id="stuId-del" placeholder="输入学生Id">
                         </div>
@@ -146,6 +149,20 @@
                         <button type="reset" class="btn btn-success">重置</button>
                     </div>
                 </form>
+            </li>
+            <li>
+              <form class="form-horizontal" method="get" action="/cgi-bin/sx/fdel.cgi">
+                  <div class="form-group">
+                      <label for="stuId-del" class="col-sm-2 control-label">输入要永久删除的学生Id</label>
+                      <div class="col-sm-10">
+                          <input type="text" name="stuId" class="form-control" id="stuId-del" placeholder="输入学生Id">
+                      </div>
+                  </div>
+                  <div class="text-center">
+                      <button type="submit" class="btn btn-success">提交</button>
+                      <button type="reset" class="btn btn-success">重置</button>
+                  </div>
+              </form>
             </li>
         </ul>
     </div>

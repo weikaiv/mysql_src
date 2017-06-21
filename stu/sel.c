@@ -53,7 +53,7 @@ fclose(fd);
 
 	if (name[0] == '*')
 	{
-		sprintf(sql, "select * from information");
+		sprintf(sql, "select id, name, sex, age, sid from information where state = 0");
 	}
 	else
 	{
