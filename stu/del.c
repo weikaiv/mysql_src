@@ -17,7 +17,6 @@ int cgiMain()
 	int status = 0;
 	char ch;
 
-	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
 	if(!(fd = fopen(headname, "r"))){
 		fprintf(cgiOut, "Cannot open file, %s\n", headname);
 		return -1;
@@ -60,8 +59,9 @@ int cgiMain()
 		return -1;
 	}
 
+  sprintf(sql, "select * from information where id =%d", atoi(stuId));
 
-	sprintf(sql, "delete from information where id = %d", atoi(stuId));
+	// sprintf(sql, "delete from information where id = %d", atoi(stuId));
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
 		fprintf(cgiOut,"mysql_real_query fail:%s\n", mysql_error(db));
@@ -69,8 +69,26 @@ int cgiMain()
 		return -1;
 	}
 
-	fprintf(cgiOut, "<div class=\"container\"> <h1 class=\"text-center\">永久删除学生成功</h1>");
-	
+	MYSQL_RES *res;
+	res = mysql_store_result(db);
+	int num= (int)res->row_count;
+
+	if(num){
+		sprintf(sql, "delete from information where id = %d", atoi(stuId));
+
+		if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
+  	{
+  		fprintf(cgiOut,"mysql_real_query fail:%s\n", mysql_error(db));
+  		mysql_close(db);
+  		return -1;
+  	}
+		fprintf(cgiOut, "<div class=\"container\"> <h1 class=\"text-center\">永久删除学生成功</h1>");
+	}else{
+		fprintf(cgiOut, "<div class=\"container\"> <h1 class=\"text-center\">您要删除的学生不存在，请重新输入!</h1>");
+	}
+
+
+
 	mysql_close(db);
 
 	return 0;

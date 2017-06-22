@@ -58,10 +58,10 @@ int cgiMain()
   MYSQL_RES *res;
 	res = mysql_store_result(db);
 	int num= (int)res->row_count;
-	if (res = NULL){
-		fprintf(cgiOut,"mysql_real_query fail:%s\n", mysql_error(db));
-		return -1;
-	}
+	// if (res = NULL){
+	// 	fprintf(cgiOut,"mysql_real_query fail:%s\n", mysql_error(db));
+	// 	return -1;
+	// }
 	if (num)
 	{
 
@@ -77,6 +77,9 @@ int cgiMain()
 			ch = fgetc(fd);
 		}
 	  fclose(fd);
+	}
+	else{
+		 fprintf(cgiOut, "<div class=\"container\"> <h1 class=\"text-center\">您输入的账号不正确，请重新输入！</h1>");
 	}
 
 	// fprintf(cgiOut, "delete stu ok!\n");
